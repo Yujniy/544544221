@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Языки программирования</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Мир программирования</h1>
+            <nav>
+                <ul>
+                    <li><a href="#top">Топ языков</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<main>
+    <section id="top" class="container">
+        <h2>Топ языков программирования</h2>
+        <p>Популярность языков программирования постоянно меняется. Вот текущий рейтинг самых востребованных языков:</p>
+        <div class="chart-container">
+            <canvas id="languageChart"></canvas>
+        </div>
+    </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.getElementById('languageChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Python', 'JavaScript', 'Java', 'C#', 'PHP'],
+            datasets: [{
+                label: 'Популярность (%)',
+                data: [90, 80, 70, 60, 50],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 206, 86, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(153, 102, 255, 0.8)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Популярность языков программирования',
+                    font: {
+                        size: 18
+                    }
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
